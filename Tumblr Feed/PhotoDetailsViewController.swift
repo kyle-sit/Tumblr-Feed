@@ -13,16 +13,20 @@ class PhotoDetailsViewController: UIViewController {
     @IBOutlet weak var tumblrPhoto: UIImageView!
     
     
-    var post = NSDictionary!
+    var post: NSDictionary!
     
-    
+    @IBAction func tapRecognizer(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "segue", sender: nil)
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let photos = post?.value(forKeyPath: "photos") as? [NSDictionary] {
             let imageUrlString = photos[0].value(forKeyPath: "original_size.url") as? String
             if let imageUrl = URL(string: imageUrlString!) {
-                cell.photoImage.setImageWith(imageUrl)
+                tumblrPhoto.setImageWith(imageUrl)
             } else {
             }
         } else {
@@ -38,14 +42,17 @@ class PhotoDetailsViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destination = segue.destination as! FullScreenPhotoViewController;
+        destination.photoImage = tumblrPhoto;
+        
     }
-    */
+
 
 }

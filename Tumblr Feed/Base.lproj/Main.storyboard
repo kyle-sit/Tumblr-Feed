@@ -62,9 +62,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Yik-A7-VYa">
-                                <rect key="frame" x="48" y="54" width="279" height="258"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Yik-A7-VYa">
+                                <rect key="frame" x="48" y="109" width="282" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6W9-oP-TcJ" appends="YES" id="5ix-VL-x7p"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,11 +76,52 @@
                     <navigationItem key="navigationItem" id="TaR-6Z-A0p"/>
                     <connections>
                         <outlet property="tumblrPhoto" destination="Yik-A7-VYa" id="m7L-Xi-xD7"/>
+                        <segue destination="e6g-Ho-P7K" kind="modal" identifier="segue" modalTransitionStyle="partialCurl" id="wSQ-Zo-rMl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2NP-xv-isT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6W9-oP-TcJ">
+                    <connections>
+                        <action selector="tapRecognizer:" destination="aIE-dN-ObX" id="b6P-tK-bwg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1156.5" y="118.5"/>
+            <point key="canvasLocation" x="1120" y="155"/>
+        </scene>
+        <!--Full Screen Photo View Controller-->
+        <scene sceneID="oy2-j5-mBq">
+            <objects>
+                <viewController id="e6g-Ho-P7K" customClass="FullScreenPhotoViewController" customModule="Tumblr_Feed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hje-GU-s0Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" maximumZoomScale="3" id="7a8-hi-5OZ">
+                                <rect key="frame" x="41" y="102" width="292" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="yDC-hK-Lg0">
+                                        <rect key="frame" x="26" y="33" width="240" height="252"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dEU-Hy-DVB" appends="YES" id="k8o-EK-yJi"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="photoImage" destination="yDC-hK-Lg0" id="Ve8-Q8-Anq"/>
+                        <outlet property="scroll" destination="7a8-hi-5OZ" id="AHd-pL-wwz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8no-Ck-ml4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dEU-Hy-DVB"/>
+            </objects>
+            <point key="canvasLocation" x="1558.5" y="154.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Esc-rP-Gqa">
